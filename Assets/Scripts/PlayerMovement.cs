@@ -8,37 +8,51 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float runSpeed = 10f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] Vector2 deadpop = new Vector2(20f, 20f);
     Vector2 moveInput;
     Rigidbody2D rb;
     Animator myAnimator;
-    CapsuleCollider2D cc;
+    CapsuleCollider2D bc;
+    BoxCollider2D fc;
 
     float gravityScaleAtStart;
+
+    bool isAlive = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        cc = GetComponent<CapsuleCollider2D>();
+        bc = GetComponent<CapsuleCollider2D>();
+        fc = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = rb.gravityScale;
     }
 
    
     void Update()
     {
+        if(!isAlive)
+        {
+            return;
+        }
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
     }
 
     void OnMove(InputValue value)
     {
+        if(!isAlive)
+        {
+            return;
+        }
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
     }
 
     void OnJump(InputValue value)
     {
-        if(!cc.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(!fc.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
         }
@@ -71,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ClimbLadder()
     {
-        if (!cc.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (!fc.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             rb.gravityScale = gravityScaleAtStart;
             myAnimator.SetBool("isClimbing", false);
@@ -83,5 +97,15 @@ public class PlayerMovement : MonoBehaviour
 
         bool playerHasVerticalSpeed = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
+    }
+
+    void Die()
+    {
+        if(bc.IsTouchingLayers(LayerMask.GetMask("enemy", "hazard")))
+        {
+            isAlive = false;
+            myAnimator.SetTrigger("Die");
+            rb.velocity = deadpop;
+        }
     }
 }
