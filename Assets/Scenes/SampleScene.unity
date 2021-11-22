@@ -22390,37 +22390,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &888294455 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8823391575360899530, guid: e49e0bc77a3034542be8d8e3fdad00bf, type: 3}
-  m_PrefabInstance: {fileID: 8823391575166835544}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &888294461
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888294455}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 40809c6bc6892e047b40e1651205b4af, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.027568817, y: -0.43583727}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.4617691, y: 0.12832546}
-  m_EdgeRadius: 0
 --- !u!1 &962568926
 GameObject:
   m_ObjectHideFlags: 0
@@ -28630,7 +28599,7 @@ GameObject:
   - component: {fileID: 2110066442}
   m_Layer: 11
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28803,18 +28772,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 343003799, guid: e49e0bc77a3034542be8d8e3fdad00bf, type: 3}
-      propertyPath: m_Size.x
-      value: 0.58870506
-      objectReference: {fileID: 0}
-    - target: {fileID: 343003799, guid: e49e0bc77a3034542be8d8e3fdad00bf, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 343003799, guid: e49e0bc77a3034542be8d8e3fdad00bf, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.027287483
-      objectReference: {fileID: 0}
     - target: {fileID: 8823391575360899530, guid: e49e0bc77a3034542be8d8e3fdad00bf, type: 3}
       propertyPath: m_Name
       value: Player
