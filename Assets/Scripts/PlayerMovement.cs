@@ -118,6 +118,8 @@ public class PlayerMovement : MonoBehaviour
             isAlive = false;
             myAnimator.SetTrigger("Die");
             rb.velocity = deadpop;
+
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
     }
 }
